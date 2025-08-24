@@ -151,18 +151,18 @@ function formatDateTime(ts) {
   let minutes = date.getMinutes().toString().padStart(2, "0");
   const ampm = hours >= 12 ? "PM" : "AM";
   hours = hours % 12 || 12;
-  return ${day} ${month} ${hours}:${minutes}${ampm};
+  return `${day} ${month} ${hours}:${minutes}${ampm}`;
 }
 
 // ===== Reaction helpers (use arrayUnion/arrayRemove with "emoji::user") =====
 async function toggleReaction(msgId, emoji) {
   if (!username) return;
-  const key = ${emoji}::${username};
+  const key = `${emoji}::${username}`;
   const ref = doc(db, "messages", msgId);
 
   // naive toggle: try remove first, if nothing removed Firestore keeps same; then add.
   // But arrayRemove needs exact match; to truly toggle, we read DOM dataset to know current state:
-  const chipEl = document.querySelector(.msg[data-id="${msgId}"] .reaction-chip[data-emoji="${emoji}"]);
+  const chipEl = document.querySelector(`.msg[data-id="${msgId}"] .reaction-chip[data-emoji="${emoji}"]`);
   const alreadyReacted = chipEl?.classList.contains("me-reacted");
 
   if (alreadyReacted) {
@@ -201,7 +201,7 @@ function renderMessage(m) {
 
   // main text
   const textEl = document.createElement("div");
-  textEl.textContent = ${m.user}: ${m.text};
+  textEl.textContent = `${m.user}: ${m.text}`;
   bubble.appendChild(textEl);
 
   // actions (Reply & React)
@@ -260,7 +260,7 @@ function applyReactions(bubble, reactionsArr) {
     chip.className = "reaction-chip";
     chip.dataset.emoji = emoji;
     if (users.has(username)) chip.classList.add("me-reacted");
-    chip.textContent = ${emoji} ${users.size};
+    chip.textContent = `${emoji} ${users.size}`;
     chip.title = Array.from(users).join(", ");
     chip.addEventListener("click", () => toggleReaction(bubble.dataset.id, emoji));
     bar.appendChild(chip);
@@ -303,4 +303,3 @@ document.addEventListener("click", (e) => {
     if (el !== bubble) el.classList.remove("show-picker");
   });
 });
-
