@@ -1,12 +1,12 @@
 // ✅ Firebase SDK v9+ Modular Style
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getFirestore, collection, addDoc, query, orderBy, onSnapshot } 
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // 🔑 তোমার config
 const firebaseConfig = {
   apiKey: "AIzaSyAzgFyreLLQrUhPO9GCIidJGfHE1FbNyJI",
   authDomain: "lite-chat-470a2.firebaseapp.com",
-  databaseURL: "https://lite-chat-470a2-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "lite-chat-470a2",
   storageBucket: "lite-chat-470a2.firebasestorage.app",
   messagingSenderId: "641138173406",
@@ -15,7 +15,7 @@ const firebaseConfig = {
 
 // ✅ Firebase Init
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+const db = getFirestore(app);
 
 // ✅ DOM Elements
 const msgInput = document.getElementById("msgInput");
@@ -46,10 +46,10 @@ emojiBtn.onclick=()=>{
 };
 
 // ✅ Send Message
-sendBtn.onclick=()=>{
+sendBtn.onclick=async ()=>{
   const text = msgInput.value.trim();
   if(!text) return;
-  push(ref(db,"messages"),{
+  await addDoc(collection(db,"messages"),{
     user: username,
     text: text,
     time: Date.now()
@@ -58,11 +58,15 @@ sendBtn.onclick=()=>{
 };
 
 // ✅ Listen for Messages
-onChildAdded(ref(db,"messages"), snapshot=>{
-  const msg = snapshot.val();
-  const div = document.createElement("div");
-  div.className="msg " + (msg.user===username?"me":"them");
-  div.textContent = msg.user+": "+msg.text;
-  messagesDiv.appendChild(div);
+const q = query(collection(db,"messages"), orderBy("time"));
+onSnapshot(q, snapshot=>{
+  messagesDiv.innerHTML="";
+  snapshot.forEach(doc=>{
+    const msg = doc.data();
+    const div = document.createElement("div");
+    div.className="msg " + (msg.user===username?"me":"them");
+    div.textContent = msg.user+": "+msg.text;
+    messagesDiv.appendChild(div);
+  });
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 });
