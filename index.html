@@ -1,29 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LiteChat</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LiteChat - Firestore</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
-    <header>
-      <h2>LiteChat 💬</h2>
-    </header>
 
-    <main id="messages"></main>
+  <div id="messages"></div>
+  <div id="emojiPanel"></div>
 
-    <div class="composer">
-      <button id="emojiBtn">😊</button>
-      <textarea id="msgInput" placeholder="Type a message..."></textarea>
-      <button id="sendBtn">Send</button>
-    </div>
-
-    <div id="emojiPanel" class="emoji-panel"></div>
+  <div id="inputArea">
+    <input type="text" id="msgInput" placeholder="Type a message...">
+    <button id="emojiBtn">😊</button>
+    <button id="sendBtn">Send</button>
   </div>
 
-  <!-- JS (module type, কারণ Firebase v9+ ES Modules ব্যবহার করছে) -->
+  <!-- ✅ External JS -->
   <script type="module" src="app.js"></script>
 </body>
 </html>
