@@ -1,9 +1,7 @@
-// ✅ Firebase SDK v9+ Modular
+// ✅ Firebase SDK v9+ Modular (Correct import)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-  getFirestore, collection, addDoc, query, orderBy, onSnapshot,
-  doc, updateDoc, arrayUnion, arrayRemove
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, doc, updateDoc, arrayUnion, arrayRemove } 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // 🔑 Firebase Config
 const firebaseConfig = {
@@ -305,3 +303,4 @@ document.addEventListener("click", (e) => {
     if (el !== bubble) el.classList.remove("show-picker");
   });
 });
+
