@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LiteChat - Firestore</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LiteChat — Dark</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div id="messages"></div>
-  <div id="emojiPanel"></div>
-
-  <div id="inputArea">
-    <input type="text" id="msgInput" placeholder="Type a message...">
-    <button id="emojiBtn">😊</button>
-    <button id="sendBtn">Send</button>
+  <!-- 🔐 Login -->
+  <div id="login-screen" class="login-screen">
+    <h2>🔐 Enter Password</h2>
+    <input type="password" id="password-input" placeholder="Enter Password" />
+    <button id="login-btn">Login</button>
+    <p id="login-error" class="error"></p>
   </div>
 
-  <!-- ✅ External JS -->
+  <!-- 💬 Chat App -->
+  <div id="app" class="app hidden">
+    <header>LiteChat</header>
+
+    <main id="messages" aria-live="polite"></main>
+
+    <div id="emojiPanel" aria-hidden="true"></div>
+
+    <div class="composer">
+      <button id="emojiBtn" title="Emoji">😀</button>
+      <textarea id="msgInput" rows="1" placeholder="Type a message…"></textarea>
+      <button id="sendBtn" title="Send">Send</button>
+    </div>
+  </div>
+
+  <!-- App -->
   <script type="module" src="app.js"></script>
 </body>
 </html>
