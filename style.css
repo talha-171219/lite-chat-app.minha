@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #e5ddd5;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+}
+header {
+  background: #25d366;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+main {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #efeae2;
+}
+.msg {
+  margin: 6px 0;
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+.me {
+  background: #d9fdd3;
+  margin-left: auto;
+}
+.them {
+  background: #fff;
+  margin-right: auto;
+}
+.composer {
+  display: flex;
+  padding: 10px;
+  background: #f0f0f0;
+  gap: 6px;
+}
+textarea {
+  flex: 1;
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 6px;
+  font-family: inherit;
+}
+button {
+  border: none;
+  background: #25d366;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+#emojiPanel {
+  display: none;
+  position: absolute;
+  bottom: 60px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 6px;
+  max-width: 300px;
+  flex-wrap: wrap;
+}
+#emojiPanel button {
+  background: none;
+  font-size: 20px;
+  padding: 4px;
+}

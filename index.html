@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LiteChat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h2>LiteChat 💬</h2>
+    </header>
+
+    <main id="messages"></main>
+
+    <div class="composer">
+      <button id="emojiBtn">😊</button>
+      <textarea id="msgInput" placeholder="Type a message..."></textarea>
+      <button id="sendBtn">Send</button>
+    </div>
+
+    <div id="emojiPanel" class="emoji-panel"></div>
+  </div>
+
+  <!-- JS (module type, কারণ Firebase v9+ ES Modules ব্যবহার করছে) -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
