@@ -18,15 +18,40 @@
 
   <!-- 💬 Chat App -->
   <div id="app" class="app hidden">
-    <header>LiteChat</header>
+    <header>
+      <div class="header-left">
+        <div class="avatar" id="header-avatar">U</div>
+        <div class="meta">
+          <div class="title">LiteChat</div>
+          <div class="sub">
+            <span class="status-dot"></span>
+            <span id="header-username">User</span> · <span>Online</span>
+          </div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button id="logout-btn" class="ghost">Logout</button>
+      </div>
+    </header>
 
     <main id="messages" aria-live="polite"></main>
 
+    <!-- reply draft preview -->
+    <div id="reply-draft" class="reply-draft hidden">
+      <div class="strip"></div>
+      <div class="reply-body">
+        <div class="reply-user" id="reply-user">User</div>
+        <div class="reply-text" id="reply-text">Text…</div>
+      </div>
+      <button id="reply-cancel" title="Cancel" class="ghost small">✕</button>
+    </div>
+
+    <!-- emoji panel -->
     <div id="emojiPanel" aria-hidden="true"></div>
 
     <div class="composer">
       <button id="emojiBtn" title="Emoji">😀</button>
-      <textarea id="msgInput" rows="1" placeholder="Type a message…"></textarea>
+      <textarea id="msgInput" rows="1" placeholder="Type a message… (Enter = send, Shift+Enter = new line)"></textarea>
       <button id="sendBtn" title="Send">Send</button>
     </div>
   </div>
